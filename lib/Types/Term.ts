@@ -8,10 +8,10 @@ export default interface Term {
      * The acf fields. Expose fields to use custom term information in your JS app.
      *
      * @tip Expose Custom Taxonomy Types to use custom taxonomies in your JS app.
-     * @type {Array<any>}
+     * @type {Array<object>}
      * @see https://www.advancedcustomfields.com/resources/
      */
-    acf: Array<any>,
+    acf: Array<object>,
 
     /**
      * The id.

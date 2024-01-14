@@ -7,10 +7,10 @@ export default interface User {
     /**
      * The exposed ACF fields. Expose fields to use custom user information in your JS app.
      *
-     * @type {Array<any>}
+     * @type {Array<object>}
      * @see https://www.advancedcustomfields.com/resources/
      */
-    acf: Array<any>,
+    acf: Array<object>,
 
     /**
      * The user ID.

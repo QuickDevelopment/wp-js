@@ -7,10 +7,10 @@ export default interface Media {
     /**
      * The ACF fields. Expose fields to use custom media information in your JS app.
      *
-     * @type {Array<any>}
+     * @type {Array<object>}
      * @see https://www.advancedcustomfields.com/resources/adding-fields-media-attachments/
      */
-    acf: Array<any>,
+    acf: Array<object>,
 
     /**
      * The alternative text.
