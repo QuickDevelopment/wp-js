@@ -50,7 +50,7 @@ export default class ConfigManager extends WPJSSingleton {
      * @param customConfig
      * @private
      */
-    private loadConfig(customConfig?: any): any {
+    private loadConfig(customConfig?: WPJSConfigOptions): WPJSConfigOptions {
         return { ...WPJSConfig, ...customConfig };
     }
 }

@@ -12,10 +12,10 @@ export default interface PostData {
      * The acf fields. Expose fields to use custom post information in your JS app.
      *
      * @tip Expose Custom Post Types to use custom post types in your JS app.
-     * @type {Array<any>}
+     * @type {Array<object>}
      * @see https://www.advancedcustomfields.com/resources/adding-fields-posts/
      */
-    acf: Array<any>,
+    acf: Array<object>,
 
     /**
      * The article type.
@@ -146,9 +146,9 @@ export default interface PostData {
     /**
      * The meta.
      *
-     * @type {Array<any>}
+     * @type {Array<object>}
      */
-    meta: Array<any>,
+    meta: Array<object>,
 
     /**
      * The modified.
