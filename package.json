@@ -1,7 +1,11 @@
 {
-  "name": "wp-js",
-  "private": true,
+  "name": "@quickdevelopment/wp-js",
+  "private": false,
   "version": "1.0.0",
+  "repository": "https://github.com/QuickDevelopment/wp-js",
+  "author": "QuickDevelopment",
+  "license": "MIT",
+  "description": "A simple library to interact with the WordPress REST API",
   "type": "module",
   "main": "./dist/wp-js.umd.cjs",
   "module": "./dist/wp-js.js",
@@ -15,6 +19,19 @@
   },
   "files": [
     "dist"
+  ],
+  "keywords": [
+    "wordpress",
+    "rest",
+    "api",
+    "wp",
+    "js",
+    "javascript",
+    "typescript",
+    "quickdevelopment",
+    "wp-js",
+    "client",
+    "posts"
   ],
   "scripts": {
     "dev": "vite",
