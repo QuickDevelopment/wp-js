@@ -1,30 +1,56 @@
-import Singleton from "../Singleton/Singleton.ts";
-import wpConfig from '../wp-js.config.json'
+import WPJSSingleton from "../Singleton/WPJSSingleton";
+import {WPJSConfig} from '../wp-js.config';
+import WPJSConfigOptions from "../Types/WPJSConfigOptions";
 
-class ConfigManager extends Singleton {
-    private readonly config: any;
+/**
+ * ConfigManager
+ *
+ * @description
+ * ConfigManager is a singleton class that loads the config from wp-js.config.ts
+ *
+ * @example
+ * import { ConfigManager } from "wp-js";
+ * import { WPJSConfig } from "../wp-js.config";
+ *
+ * const config = ConfigManager.getInstance(WPJSConfig);
+ */
+export default class ConfigManager extends WPJSSingleton {
+    private readonly config: WPJSConfigOptions;
 
-    private constructor(customConfig?: any) {
+    private constructor(customConfig?: WPJSConfigOptions) {
         super();
         this.config = this.loadConfig(customConfig);
     }
 
-    public static getInstance(customConfig?: any): ConfigManager {
+    public static getInstance(customConfig?: WPJSConfigOptions): ConfigManager {
         if (!ConfigManager.instance) {
             ConfigManager.instance = new ConfigManager(customConfig);
         }
         return ConfigManager.instance as ConfigManager;
     }
 
-    public getConfig(): any {
+    /**
+     * Get the config
+     *
+     * @returns {WPJSConfigOptions}
+     * @example
+     * import { ConfigManager } from "wp-js";
+     *
+     * const config = ConfigManager.getInstance();
+     *
+     * // It will return your earlier provided config
+     * console.log(config.getConfig());
+     */
+    public getConfig(): WPJSConfigOptions {
         return this.config;
     }
 
+    /**
+     * Load the config
+     * @param customConfig
+     * @private
+     */
     private loadConfig(customConfig?: any): any {
-        const defaultConfig = wpConfig;
-
-        return customConfig ? { ...defaultConfig, ...customConfig } : defaultConfig;
+        return { ...WPJSConfig, ...customConfig };
     }
 }
-
-export default ConfigManager;

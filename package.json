@@ -1,7 +1,7 @@
 {
   "name": "wp-js",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "main": "./dist/wp-js.umd.cjs",
   "module": "./dist/wp-js.js",
@@ -19,6 +19,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build:watch": "tsc && vite build --watch",
     "preview": "vite preview",
     "prepublishOnly": "npm run build"
   },
