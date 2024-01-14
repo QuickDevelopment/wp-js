@@ -8,7 +8,7 @@ Get all your public WordPress data through the WP API using a tree-shakable Type
 
 ## Installation
 ```
-npm install wp-js
+npm install @quickdevelopment/wp-js
 ```
 
 ## Usage
@@ -16,7 +16,7 @@ npm install wp-js
 ### Create a `wp-js.config.ts` file
 ```
 // wp-js.config.ts
-import {WPJSConfigOptions} from "wp-js";
+import {WPJSConfigOptions} from "@quickdevelopment/wp-js";
 
 export const WPJSConfig: WPJSConfigOptions = {
     // Replace with your WordPress API URL
@@ -29,7 +29,7 @@ export const WPJSConfig: WPJSConfigOptions = {
 If you have created the `wp-js.config.ts` file inside the root of your project, you can set the config by importing the `ConfigManager` class and calling the `getInstance` method with the `WPJSConfig` object as a parameter.
 ```
 // src/main.ts
-import { ConfigManager } from "wp-js";
+import { ConfigManager } from "@quickdevelopment/wp-js";
 import { WPJSConfig } from '../wp-js.config';
 
 ConfigManager.getInstance(WPJSConfig);
@@ -38,7 +38,7 @@ ConfigManager.getInstance(WPJSConfig);
 ### Retrieve Posts
 This is an example of how to retrieve posts from your WordPress site using the `Post` class.
 ```
-import {Posts} from "wp-js";
+import {Posts} from "@quickdevelopment/wp-js";
 
 const posts = new Posts()
 
