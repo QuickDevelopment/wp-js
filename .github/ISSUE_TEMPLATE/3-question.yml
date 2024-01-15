@@ -11,7 +11,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        **Thanks :heart: for taking the time to fill out this feature request report!**
+        **Thanks :heart: for taking the time to fill out this question report!**
 
         We are also happy to accept contributions from our users. For more details see [the guidelines](https://github.com/QuickDevelopment/wp-js/blob/main/CONTRIBUTING.md).
   - type: textarea
