@@ -1,5 +1,4 @@
 import WPJSSingleton from "../Singleton/WPJSSingleton";
-import PostData from "../Types/PostData.ts";
 import ConfigManager from "../Manager/ConfigManager.ts";
 
 /**
@@ -9,28 +8,42 @@ import ConfigManager from "../Manager/ConfigManager.ts";
  * @abstract
  */
 export default class WPJSBase<T> extends WPJSSingleton {
-    private readonly postUrl: string = 'posts';
+    private readonly endpoint: string = 'posts';
     private readonly apiUrl: string = ConfigManager.getInstance().getConfig().apiUrl;
-    private searchParams: string = '?';
-    private embed: boolean = ConfigManager.getInstance().getConfig().embed;
+    private searchParams: URLSearchParams = new URLSearchParams(ConfigManager.getInstance().getConfig().embed ? '_embed=true' : '');
 
-    constructor(postUrl?: string) {
+    constructor(endpoint?: string) {
         super()
-        if (postUrl) {
-            this.postUrl = postUrl;
+        if (endpoint) {
+            this.endpoint = endpoint;
         }
     }
 
-    private getPostUrl(): string {
-        return this.postUrl;
+    private getEndpoint(): string {
+        return this.endpoint;
     }
 
     private getApiUrl(): string {
         return this.apiUrl;
     }
 
-    private getSearchParams(): string {
+    protected getSearchParams(): URLSearchParams {
         return this.searchParams;
+    }
+
+    /**
+     * Set search parameters for the request.
+     * @param params Object containing search parameters.
+     * @since 1.0.1
+     */
+    protected setSearchParams(params: Record<string, string | number>): this {
+        for (const [key, value] of Object.entries(params)) {
+            if (value != null) {
+                this.searchParams.set(key, value.toString());
+            }
+        }
+
+        return this;
     }
 
     /**
@@ -50,7 +63,6 @@ export default class WPJSBase<T> extends WPJSSingleton {
      * })
      */
     protected async get(): Promise<T[]> {
-        console.log(this.constructUrl())
         const response: Response = await fetch(this.constructUrl())
         const data = await response.json();
         return data as T[];
@@ -72,45 +84,14 @@ export default class WPJSBase<T> extends WPJSSingleton {
      *     console.error(error)
      * })
      */
-    protected getPosts(): Promise<PostData[]> {
-        return Promise.reject(
-            new Error('getPosts() must be implemented.')
-        )
+    public getPosts(): Promise<T[]> {
+        return this.get();
     }
 
-    /**
-     * Set the embed for the request.
-     * @param embed
-     * @since 1.0.0
-     * @example
-     * import {Posts} from "wp-js";
-     *
-     * const posts = new Posts()
-     *
-     * posts.setEmbedForRequest(false).getPosts().then((posts) => {
-     *     console.log(posts)
-     * })
-     * .catch((error) => {
-     *     console.error(error)
-     * })
-     */
-    public setEmbedForRequest(embed: boolean): this {
-        this.embed = embed;
-        return this;
-    }
-
-    private constructUrl(): string
-    {
-        const baseUrl: string = `${this.getApiUrl()}/${this.getPostUrl()}${this.getSearchParams()}`;
-        const embedParam: string = `_embed=${this.embed}`;
-
-        if (baseUrl.includes('_embed=')) {
-            return baseUrl.replace(/_embed=[^&]+/, embedParam);
-        } else if (this.getSearchParams() === '?') {
-            return `${baseUrl}${embedParam}`;
-        } else {
-            return `${baseUrl}&${embedParam}`;
-        }
+    private constructUrl(): string {
+        const url: URL = new URL(`${this.getApiUrl()}/${this.getEndpoint()}`);
+        url.search = this.searchParams.toString();
+        return url.toString();
     }
 
     /**
@@ -131,17 +112,6 @@ export default class WPJSBase<T> extends WPJSSingleton {
      * })
      */
     public take(perPage: number, page: number): this {
-        const url: URL = new URL(this.constructUrl());
-        const perPageParam: string | null = url.searchParams.get("per_page");
-
-        if (perPageParam) {
-            url.searchParams.set("per_page", String(perPage));
-            url.searchParams.set("page", String(page));
-        } else {
-            url.searchParams.append("per_page", String(perPage));
-            url.searchParams.append("page", String(page));
-        }
-        this.searchParams = url.search;
-        return this;
+        return this.setSearchParams({ per_page: perPage, page: page });
     }
 }
