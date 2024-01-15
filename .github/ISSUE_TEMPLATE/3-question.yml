@@ -1,0 +1,9 @@
+---
+name: ❓ Question
+about: Share a question about Wp-JS
+title: "[Q]"
+labels:
+  - "question"
+assignees:
+    - keygun-development
+---
