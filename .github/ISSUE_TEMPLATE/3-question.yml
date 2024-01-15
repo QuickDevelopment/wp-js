@@ -1,9 +1,23 @@
 ---
 name: ❓ Question
-about: Share a question about Wp-JS
-title: "[Q]"
+description: Share a question about Wp-JS
+title: "[Question]: "
 labels:
   - "question"
 assignees:
-    - keygun-development
----
+  - keygun-development
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Thanks :heart: for taking the time to fill out this feature request report!**
+
+        We are also happy to accept contributions from our users. For more details see [the guidelines](https://github.com/QuickDevelopment/wp-js/blob/main/CONTRIBUTING.md).
+  - type: textarea
+    attributes:
+      label: Description
+      description: |
+        A clear and concise description of the question.
+    validations:
+      required: true
