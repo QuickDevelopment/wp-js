@@ -8,38 +8,47 @@ import ConfigManager from "../Manager/ConfigManager.ts";
  * @abstract
  */
 export default class WPJSBase<T> extends WPJSSingleton {
-    private readonly endpoint: string = 'posts';
-    private readonly apiUrl: string = ConfigManager.getInstance().getConfig().apiUrl;
-    private searchParams: URLSearchParams = new URLSearchParams(ConfigManager.getInstance().getConfig().embed ? '_embed=true' : '');
+    protected endpoint: string = 'posts';
+    private readonly _apiUrl: string = ConfigManager.getInstance().getConfig().apiUrl;
+    private _searchParams: URLSearchParams = new URLSearchParams(ConfigManager.getInstance().getConfig().embed ? '_embed=true' : '');
 
-    constructor(endpoint?: string) {
+    constructor() {
         super()
-        if (endpoint) {
-            this.endpoint = endpoint;
-        }
     }
 
+    /**
+     * Get the endpoint.
+     * @private
+     */
     private getEndpoint(): string {
         return this.endpoint;
     }
 
+    /**
+     * Get the API url.
+     * @private
+     */
     private getApiUrl(): string {
-        return this.apiUrl;
+        return this._apiUrl;
     }
 
+    /**
+     * Get the search parameters.
+     * @protected
+     */
     protected getSearchParams(): URLSearchParams {
-        return this.searchParams;
+        return this._searchParams;
     }
 
     /**
      * Set search parameters for the request.
      * @param params Object containing search parameters.
-     * @since 1.0.1
+     * @since 2.0.0
      */
     protected setSearchParams(params: Record<string, string | number>): this {
         for (const [key, value] of Object.entries(params)) {
             if (value != null) {
-                this.searchParams.set(key, value.toString());
+                this._searchParams.set(key, value.toString());
             }
         }
 
@@ -47,71 +56,36 @@ export default class WPJSBase<T> extends WPJSSingleton {
     }
 
     /**
-     * Get the posts.
+     * Get data about the current class.
      * @since 1.0.0
      * @protected
-     * @example
-     * import {Posts} from "wp-js";
-     *
-     * const posts = new Posts()
-     *
-     * posts.getPosts().then((posts) => {
-     *     console.log(posts)
-     * })
-     * .catch((error) => {
-     *     console.error(error)
-     * })
      */
     protected async get(): Promise<T[]> {
+        console.log(this.constructUrl())
         const response: Response = await fetch(this.constructUrl())
         const data = await response.json();
         return data as T[];
     }
 
     /**
-     * Get the posts.
-     *
-     * @since 1.0.0
-     * @example
-     * import {Posts} from "wp-js";
-     *
-     * const posts = new Posts()
-     *
-     * posts.getPosts().then((posts) => {
-     *     console.log(posts)
-     * })
-     * .catch((error) => {
-     *     console.error(error)
-     * })
+     * Fetch the data from the API.
+     * @protected
+     * @since 2.0.0
      */
-    public getPosts(): Promise<T[]> {
-        return this.get();
-    }
-
-    private constructUrl(): string {
-        const url: URL = new URL(`${this.getApiUrl()}/${this.getEndpoint()}`);
-        url.search = this.searchParams.toString();
-        return url.toString();
+    protected fetch(): Promise<T[]> {
+        return Promise.reject(
+            new Error('getPosts() must be implemented.')
+        )
     }
 
     /**
-     * Set the amount of posts to retrieve.
-     * @param perPage
-     * @param page
+     * Construct the url for the request.
+     * @private
      * @since 1.0.0
-     * @example
-     * import {Posts} from "wp-js";
-     *
-     * const posts = new Posts()
-     *
-     * posts.take(10, 1).getPosts().then((posts) => {
-     *     console.log(posts)
-     * })
-     * .catch((error) => {
-     *     console.error(error)
-     * })
      */
-    public take(perPage: number, page: number): this {
-        return this.setSearchParams({ per_page: perPage, page: page });
+    private constructUrl(): string {
+        const url: URL = new URL(`${this.getApiUrl()}/${this.getEndpoint()}`);
+        url.search = this._searchParams.toString();
+        return url.toString();
     }
 }

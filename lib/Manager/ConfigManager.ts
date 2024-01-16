@@ -9,24 +9,23 @@ import WPJSConfigOptions from "../Types/WPJSConfigOptions";
  * ConfigManager is a singleton class that loads the config from wp-js.config.ts
  *
  * @example
- * import { ConfigManager } from "wp-js";
- * import { WPJSConfig } from "../wp-js.config";
+ * import {ConfigManager} from "@quickdevelopment/wp-js";
  *
- * const config = ConfigManager.getInstance(WPJSConfig);
+ * ConfigManager.getInstance({ apiUrl: 'https://api.wordpress.org/wp-json/wp/v2', embed: true });
  */
 export default class ConfigManager extends WPJSSingleton {
-    private readonly config: WPJSConfigOptions;
+    private readonly _config: WPJSConfigOptions;
 
     private constructor(customConfig?: WPJSConfigOptions) {
         super();
-        this.config = this.loadConfig(customConfig);
+        this._config = this.loadConfig(customConfig);
     }
 
     public static getInstance(customConfig?: WPJSConfigOptions): ConfigManager {
-        if (!ConfigManager.instance) {
-            ConfigManager.instance = new ConfigManager(customConfig);
+        if (!ConfigManager._instance) {
+            ConfigManager._instance = new ConfigManager(customConfig);
         }
-        return ConfigManager.instance as ConfigManager;
+        return ConfigManager._instance as ConfigManager;
     }
 
     /**
@@ -34,7 +33,7 @@ export default class ConfigManager extends WPJSSingleton {
      *
      * @returns {WPJSConfigOptions}
      * @example
-     * import { ConfigManager } from "wp-js";
+     * import { ConfigManager } from "@quickdevelopment/wp-js";
      *
      * const config = ConfigManager.getInstance();
      *
@@ -42,7 +41,7 @@ export default class ConfigManager extends WPJSSingleton {
      * console.log(config.getConfig());
      */
     public getConfig(): WPJSConfigOptions {
-        return this.config;
+        return this._config;
     }
 
     /**

@@ -1,19 +1,127 @@
-import PostData from "../Types/PostData";
-import createApi from "../Factory/CreateApi";
+import WPJSBase from "../Base/WPJSBase.ts";
+import PostData from "../Types/PostData.ts";
 
 /**
  * Post class.
  *
- * @since 1.0.0
- * @example
- * import {Post} from "wp-js";
- *
- * // Endpoint is optional, if not provided it will use the posts endpoint.
- * const post = new Post('endpoint')
- * post.getPosts().then((posts) => {
- *     console.log(posts)
- * })
+ * @since 2.0.0
  */
-const Post = createApi<PostData>({});
+export default class Post extends WPJSBase<PostData>  {
+    private _slug: string = '';
+    private _searchTerm: string = '';
 
-export default Post;
+    constructor(endpoint?: string) {
+        super();
+        this.endpoint = endpoint ? endpoint : 'posts';
+    }
+
+    /**
+     * Set the slug.
+     * @param slug
+     * @since 2.0.0
+     * @description
+     * This will set the slug. This is useful if you want to get posts from different slugs while keeping the same Post instance.
+     * @example
+     * import {Post} from "@quickdevelopment/wp-js";
+     *
+     * const slugPost = new Post();
+     *
+     * slugPost.bySlug('hello-world').get().then((post) => {
+     *     // This will return the post from slug 'hello-world'.
+     *     console.log(post)
+     * })
+     */
+    public bySlug(slug: string): this {
+        this._slug = slug;
+        this.setSearchParams({slug: slug})
+        return this;
+    }
+
+    /**
+     * Get the slug.
+     * @since 2.0.0
+     */
+    public getSlug(): string {
+        return this._slug;
+    }
+
+    /**
+     * Set the searchTerm.
+     * @param searchTerm
+     * @since 2.0.0
+     * @description
+     * This will set the searchTerm. This is useful if you want to get posts from different searchTerms while keeping the same Post instance.
+     * @example
+     * import {Post} from "@quickdevelopment/wp-js";
+     *
+     * const searchTermPosts = new Post();
+     *
+     * searchTermPosts.bySearchTerm('hello-world').get().then((posts) => {
+     *     // This will return the post from slug 'hello-world'.
+     *     console.log(posts)
+     * })
+     */
+    public bySearchTerm(searchTerm: string): this {
+        this._searchTerm = searchTerm;
+        this.setSearchParams({search: searchTerm})
+        return this;
+    }
+
+    /**
+     * Get the searchTerm.
+     * @since 2.0.0
+     */
+    public getSearchTerm(): string {
+        return this._searchTerm;
+    }
+
+    /**
+     * Set the author.
+     * @param userId
+     * @since 2.0.0
+     * @description
+     * This will set the author. This is useful if you want to get posts from different authors while keeping the same Post instance.
+     * @example
+     * import {Post} from "@quickdevelopment/wp-js";
+     *
+     * const authorPosts = new Post();
+     *
+     * authorPosts.byAuthor(1).get().then((posts) => {
+     *     // This will return the posts from author with id 1.
+     *     console.log(posts)
+     * })
+     */
+    public byAuthor(userId: number): this {
+        this.setSearchParams({author: userId})
+        return this;
+    }
+
+    /**
+     * Set the amount of posts to take.
+     * @param perPage
+     * @param page
+     * @since 2.0.0
+     * @description
+     * This will paginate the posts using per_page and the page query parameters.
+     */
+    public paginate(perPage: number, page: number): this {
+        this.setSearchParams({per_page: perPage, page: page})
+        return this;
+    }
+
+    /**
+     * Get the posts.
+     * @since 2.0.0
+     * @example
+     * import {Post} from "@quickdevelopment/wp-js";
+     *
+     * const posts = new Post();
+     *
+     * posts.fetch().then((posts) => {
+     *     console.log(posts)
+     * })
+     */
+    public async fetch(): Promise<PostData[]> {
+        return this.get();
+    }
+}
