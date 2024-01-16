@@ -13,26 +13,16 @@ npm install @quickdevelopment/wp-js
 
 ## Usage
 
-### Create a `wp-js.config.ts` file
-```
-// wp-js.config.ts
-import {WPJSConfigOptions} from "@quickdevelopment/wp-js";
-
-export const WPJSConfig: WPJSConfigOptions = {
-    // Replace with your WordPress API URL
-    apiUrl: 'https://developer.wordpress.org/wp-json/wp/v2',
-    embed: true
-}
-```
-
 ### Setting the Config
-If you have created the `wp-js.config.ts` file inside the root of your project, you can set the config by importing the `ConfigManager` class and calling the `getInstance` method with the `WPJSConfig` object as a parameter.
 ```
 // src/main.ts
 import { ConfigManager } from "@quickdevelopment/wp-js";
-import { WPJSConfig } from '../wp-js.config';
 
-ConfigManager.getInstance(WPJSConfig);
+ConfigManager.getInstance({
+    // Replace with your WordPress API URL
+    apiUrl: 'https://developer.wordpress.org/wp-json/wp/v2',
+    embed: true
+});
 ```
 
 ### Retrieve Posts
