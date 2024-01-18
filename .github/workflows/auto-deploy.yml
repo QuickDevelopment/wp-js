@@ -21,6 +21,14 @@ jobs:
           echo "@quickdevelopment:registry=https://npm.pkg.github.com" >> .npmrc
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
 
+      - name: Publish to npm Registry
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Remove GitHub Package Registry configuration
+        run: rm .npmrc
+
       - name: Configure npm Registry
         run: |
           echo "@quickdevelopment:registry=https://registry.npmjs.org/" > .npmrc
@@ -29,4 +37,4 @@ jobs:
       - name: Publish to npm Registry
         run: npm publish
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
