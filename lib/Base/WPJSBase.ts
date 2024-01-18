@@ -60,11 +60,11 @@ export default class WPJSBase<T> extends WPJSSingleton {
      * @since 1.0.0
      * @protected
      */
-    protected async get(): Promise<T[]> {
+    protected async get<T>(): Promise<T> {
         console.log(this.constructUrl())
         const response: Response = await fetch(this.constructUrl())
         const data = await response.json();
-        return data as T[];
+        return data as T;
     }
 
     /**
@@ -72,11 +72,11 @@ export default class WPJSBase<T> extends WPJSSingleton {
      * @protected
      * @since 2.0.0
      */
-    protected fetch(): Promise<T[]> {
-        return Promise.reject(
-            new Error('getPosts() must be implemented.')
-        )
-    }
+        protected fetch(): Promise<T> {
+            return Promise.reject(
+                new Error('getPosts() must be implemented.')
+            )
+        }
 
     /**
      * Construct the url for the request.
