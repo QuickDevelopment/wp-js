@@ -1,34 +1,37 @@
-name: Publish to npm
+name: Node.js Package
 
 on:
-  push:
-    tags:
-      - '*'
+  release:
+    types: [created]
 
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: 16
+      - run: npm ci
+      - run: npm test
 
-      - name: Install dependencies
-        run: npm install
 
-      - name: Configure npm registry
-        run: echo "//npm.pkg.github.com/:_authToken=\${{ secrets.PACKAGES_TOKEN }}" > ~/.npmrc
-
-      - name: Publish to GitHub Package Registry
-        run: npm publish --registry=https://npm.pkg.github.com/@quickdevelopment
-
-      - name: Configure public npm registry
-        run: echo "//registry.npmjs.org/:_authToken=\${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-
-      - name: Publish to public npm registry
-        run: npm publish
+  publish-gpr:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: https://npm.pkg.github.com/
+      - run: npm ci
+      - run: |
+          echo "@quickdevelopment:registry=https://npm.pkg.github.com" >> .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
