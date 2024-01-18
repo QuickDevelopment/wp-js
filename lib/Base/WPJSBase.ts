@@ -1,5 +1,5 @@
 import WPJSSingleton from "../Singleton/WPJSSingleton";
-import ConfigManager from "../Manager/ConfigManager.ts";
+import ConfigManager from "../Manager/ConfigManager";
 
 /**
  * Base class for all WPJS classes.

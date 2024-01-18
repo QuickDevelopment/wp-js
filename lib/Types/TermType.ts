@@ -1,9 +1,9 @@
 /**
  * The WP Term fields
  *
- * @interface Term
+ * @interface TermType
  */
-export default interface Term {
+export default interface TermType {
     /**
      * The acf fields. Expose fields to use custom term information in your JS app.
      *

@@ -1,12 +1,12 @@
-import WPJSBase from "../Base/WPJSBase.ts";
-import PostData from "../Types/PostData.ts";
+import WPJSBase from "../Base/WPJSBase";
+import PostDataType from "../Types/PostDataType";
 
 /**
  * Post class.
  *
  * @since 2.0.0
  */
-export default class Post extends WPJSBase<PostData>  {
+export default class Post extends WPJSBase<PostDataType>  {
     private _slug: string = '';
     private _searchTerm: string = '';
 
@@ -121,7 +121,7 @@ export default class Post extends WPJSBase<PostData>  {
      *     console.log(posts)
      * })
      */
-    public async fetch(): Promise<PostData[]> {
+    public async fetch(): Promise<PostDataType[]> {
         return this.get();
     }
 }

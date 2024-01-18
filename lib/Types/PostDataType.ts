@@ -1,13 +1,13 @@
-import User from "./User.ts";
-import Media from "./Media.ts";
-import Term from "./Term";
+import UserType from "./UserType";
+import MediaType from "./MediaType";
+import TermType from "./TermType";
 
 /**
  * The WP Post fields.
  *
- * @interface PostData
+ * @interface PostDataType
  */
-export default interface PostData {
+export default interface PostDataType {
     /**
      * The acf fields. Expose fields to use custom post information in your JS app.
      *
@@ -230,29 +230,29 @@ export default interface PostData {
     /**
      * The _embedded.
      *
-     * @type {{"wp:featuredmedia": Array<Media>, "wp:term": Array<Term>, author: Array<User>}}
+     * @type {{"wp:featuredmedia": Array<MediaType>, "wp:term": Array<TermType>, author: Array<UserType>}}
      */
     _embedded: {
 
         /**
          * The featured media.
          *
-         * @type {Array<Media>}
+         * @type {Array<MediaType>}
          */
-        "wp:featuredmedia": Array<Media>,
+        "wp:featuredmedia": Array<MediaType>,
 
         /**
          * The terms.
          *
-         * @type {Array<Term>}
+         * @type {Array<TermType>}
          */
-        "wp:term": Array<Term>,
+        "wp:term": Array<TermType>,
 
         /**
          * The author.
          *
-         * @type {Array<User>}
+         * @type {Array<UserType>}
          */
-        author: Array<User>
+        author: Array<UserType>
     }
 }

@@ -1,9 +1,9 @@
 /**
  * The WP User fields.
  *
- * @interface User
+ * @interface UserType
  */
-export default interface User {
+export default interface UserType {
     /**
      * The exposed ACF fields. Expose fields to use custom user information in your JS app.
      *
