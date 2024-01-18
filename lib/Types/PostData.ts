@@ -1,4 +1,4 @@
-import User from "./User.ts";
+import UserDataType from "./UserDataType.ts";
 import Media from "./Media.ts";
 import Term from "./Term";
 
@@ -230,7 +230,7 @@ export default interface PostData {
     /**
      * The _embedded.
      *
-     * @type {{"wp:featuredmedia": Array<Media>, "wp:term": Array<Term>, author: Array<User>}}
+     * @type {{"wp:featuredmedia": Array<Media>, "wp:term": Array<Term>, author: Array<UserDataType>}}
      */
     _embedded: {
 
@@ -251,8 +251,8 @@ export default interface PostData {
         /**
          * The author.
          *
-         * @type {Array<User>}
+         * @type {Array<UserDataType>}
          */
-        author: Array<User>
+        author: Array<UserDataType>
     }
 }

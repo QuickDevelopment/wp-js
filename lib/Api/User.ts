@@ -1,12 +1,12 @@
 import WPJSBase from "../Base/WPJSBase.ts";
-import PostData from "../Types/PostData.ts";
+import UserDataType from "../Types/UserDataType.ts";
 
 /**
  * User class.
  *
  * @since 2.0.0
  */
-export default class User extends WPJSBase<PostData> {
+export default class User extends WPJSBase<UserDataType> {
     private _userId: number;
 
     constructor(userId: number) {
@@ -70,7 +70,7 @@ export default class User extends WPJSBase<PostData> {
      *     console.log(user)
      * })
      */
-    public async fetch(): Promise<PostData[]> {
+    public async fetch(): Promise<UserDataType> {
         return this.get();
     }
 }
