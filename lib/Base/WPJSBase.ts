@@ -68,15 +68,26 @@ export default class WPJSBase<T> extends WPJSSingleton {
     }
 
     /**
-     * Fetch the data from the API.
+     * Fetch a single object from the endpoint.
      * @protected
      * @since 2.0.0
      */
-        protected fetch(): Promise<T> {
-            return Promise.reject(
-                new Error('getPosts() must be implemented.')
-            )
-        }
+    protected fetch(): Promise<T> {
+        return Promise.reject(
+            new Error('fetch() must be implemented.')
+        )
+    }
+
+    /**
+     * Fetch multiple objects from the endpoint.
+     * @protected
+     * @since 2.0.0
+     */
+    protected fetchMany(): Promise<T[]> {
+        return Promise.reject(
+            new Error('fetchMany() must be implemented.')
+        )
+    }
 
     /**
      * Construct the url for the request.
