@@ -1,9 +1,9 @@
 /**
  * The WP Media fields.
  *
- * @interface Media
+ * @interface MediaType
  */
-export default interface Media {
+export default interface MediaType {
     /**
      * The ACF fields. Expose fields to use custom media information in your JS app.
      *
