@@ -121,7 +121,7 @@ export default class Post extends WPJSBase<PostDataType[]>  {
      *     console.log(posts)
      * })
      */
-    protected async fetch(): Promise<PostDataType[]> {
+    public async fetch(): Promise<PostDataType[]> {
         return this.get();
     }
 }
