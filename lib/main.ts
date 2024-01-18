@@ -3,7 +3,7 @@ export { default as WPJSBase } from './Base/WPJSBase';
 export { default as ConfigManager } from './Manager/ConfigManager';
 export { default as WPJSSingleton } from './Singleton/WPJSSingleton';
 export { default as User } from './Api/User';
-export type { default as UserType } from './Types/UserType';
+export type { default as UserDataType } from './Types/UserDataType';
 export type { default as MediaType } from './Types/MediaType';
 export type { default as PostDataType } from './Types/PostDataType';
 export type { default as TermType } from './Types/TermType';

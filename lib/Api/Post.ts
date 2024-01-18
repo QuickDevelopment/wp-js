@@ -6,7 +6,7 @@ import PostDataType from "../Types/PostDataType";
  *
  * @since 2.0.0
  */
-export default class Post extends WPJSBase<PostDataType>  {
+export default class Post extends WPJSBase<PostDataType[]>  {
     private _slug: string = '';
     private _searchTerm: string = '';
 
@@ -121,7 +121,7 @@ export default class Post extends WPJSBase<PostDataType>  {
      *     console.log(posts)
      * })
      */
-    public async fetch(): Promise<PostDataType[]> {
+    protected async fetch(): Promise<PostDataType[]> {
         return this.get();
     }
 }
