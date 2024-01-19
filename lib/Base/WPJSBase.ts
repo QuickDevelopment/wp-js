@@ -5,7 +5,6 @@ import ConfigManager from "../Manager/ConfigManager";
  * Base class for all WPJS classes.
  *
  * @since 1.0.0
- * @abstract
  */
 export default class WPJSBase<T> extends WPJSSingleton {
     protected endpoint: string = 'posts';

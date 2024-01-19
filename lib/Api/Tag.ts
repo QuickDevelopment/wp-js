@@ -1,13 +1,17 @@
 import WPJSBase from "../Base/WPJSBase";
-import UserDataType from "../Types/UserDataType.ts";
+import PostTagDataType from "../Types/Data/PostTagDataType.ts";
 
-export default class Tag extends WPJSBase<UserDataType> {
-    constructor() {
+/**
+ * The Tag class.
+ * @since 3.0.0
+ */
+export default class Tag extends WPJSBase<PostTagDataType[] | PostTagDataType> {
+    constructor(endpoint?: string) {
         super();
-        this.endpoint = 'tags';
+        this.endpoint = endpoint ? endpoint : 'tags';
     }
 
-    public async fetch(): Promise<UserDataType> {
+    public async fetch(): Promise<PostTagDataType> {
         return this.get();
     }
 }

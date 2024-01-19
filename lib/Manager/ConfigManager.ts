@@ -21,6 +21,11 @@ export default class ConfigManager extends WPJSSingleton {
         this._config = this.loadConfig(customConfig);
     }
 
+    /**
+     * Get the instance
+     * @param customConfig
+     * @since 1.0.0
+     */
     public static getInstance(customConfig?: WPJSConfigOptions): ConfigManager {
         if (!ConfigManager._instance) {
             ConfigManager._instance = new ConfigManager(customConfig);

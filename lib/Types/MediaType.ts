@@ -264,5 +264,5 @@ export default interface MediaType {
      *
      * @type {string}
      */
-    type: string
+    type: string,
 }

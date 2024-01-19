@@ -1,13 +1,46 @@
 import WPJSBase from "../Base/WPJSBase";
-import UserDataType from "../Types/UserDataType.ts";
+import TaxonomyDataType from "../Types/Data/TaxonomyDataType";
 
-export default class Taxonomy extends WPJSBase<UserDataType> {
-    constructor() {
+/**
+ * The Taxonomy class.
+ * @since 3.0.0
+ */
+export default class Taxonomy extends WPJSBase<TaxonomyDataType[] | TaxonomyDataType> {
+    constructor(endpoint?: string) {
         super();
-        this.endpoint = 'taxonomies';
+        this.endpoint = endpoint ? endpoint :'taxonomies';
     }
 
-    public async fetch(): Promise<UserDataType> {
+    /**
+     * Fetch a single taxonomy.
+     * @since 3.0.0
+     * @example
+     * import { Taxonomy } from '@quickdevelopment/wp-js';
+     *
+     * const taxonomy = new Taxonomy();
+     *
+     * taxonomy.fetch().then((data) => {
+     *     console.log(data);
+     * });
+     */
+    public async fetch(): Promise<TaxonomyDataType> {
+        return this.get();
+    }
+
+    /**
+     * Fetch many taxonomies.
+     *
+     * @since 3.0.0
+     * @example
+     * import { Taxonomy } from '@quickdevelopment/wp-js';
+     *
+     * const taxonomy = new Taxonomy();
+     *
+     * taxonomy.fetchMany().then((data) => {
+     *    console.log(data);
+     * });
+     */
+    public async fetchMany(): Promise<TaxonomyDataType[]> {
         return this.get();
     }
 }

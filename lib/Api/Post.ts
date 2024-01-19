@@ -1,5 +1,5 @@
 import WPJSBase from "../Base/WPJSBase";
-import PostDataType from "../Types/PostDataType";
+import PostDataType from "../Types/Data/PostDataType";
 
 /**
  * Post class.

@@ -1,10 +1,14 @@
 import WPJSBase from "../Base/WPJSBase"
-import PageDataType from "../Types/PageDataType";
+import PageDataType from "../Types/Data/PageDataType";
 
+/**
+ * The Page class.
+ * @since 3.0.0
+ */
 export default class Page extends WPJSBase<PageDataType[] | PageDataType> {
-    constructor() {
+    constructor(endpoint?: string) {
         super();
-        this.endpoint = 'pages';
+        this.endpoint = endpoint ? endpoint : 'pages';
     }
 
     /**

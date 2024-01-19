@@ -1,6 +1,6 @@
-import MediaType from "./MediaType.ts";
-import TermType from "./TermType.ts";
-import UserDataType from "./UserDataType.ts";
+import MediaType from "../MediaType";
+import TermType from "../TermType";
+import UserDataType from "./UserDataType";
 
 /**
  * The page data type.
