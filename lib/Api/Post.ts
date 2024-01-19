@@ -1,12 +1,12 @@
 import WPJSBase from "../Base/WPJSBase";
-import PostDataType from "../Types/PostDataType";
+import PostDataType from "../Types/Data/PostDataType";
 
 /**
  * Post class.
  *
  * @since 2.0.0
  */
-export default class Post extends WPJSBase<PostDataType[]>  {
+export default class Post extends WPJSBase<PostDataType[] | PostDataType>  {
     private _slug: string = '';
     private _searchTerm: string = '';
 
@@ -110,18 +110,34 @@ export default class Post extends WPJSBase<PostDataType[]>  {
     }
 
     /**
-     * Get the posts.
+     * Get a single post.
      * @since 2.0.0
+     * @example
+     * import {Post} from "@quickdevelopment/wp-js";
+     *
+     * const post = new Post('posts/1');
+     *
+     * post.fetch().then((post) => {
+     *     console.log(post)
+     * })
+     */
+    public async fetch(): Promise<PostDataType> {
+        return this.get();
+    }
+
+    /**
+     * Get multiple posts.
+     * @since 3.0.0
      * @example
      * import {Post} from "@quickdevelopment/wp-js";
      *
      * const posts = new Post();
      *
-     * posts.fetch().then((posts) => {
+     * posts.fetchMany().then((posts) => {
      *     console.log(posts)
      * })
      */
-    public async fetch(): Promise<PostDataType[]> {
+    public async fetchMany(): Promise<PostDataType[]> {
         return this.get();
     }
 }

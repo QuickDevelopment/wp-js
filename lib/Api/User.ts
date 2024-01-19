@@ -1,5 +1,5 @@
 import WPJSBase from "../Base/WPJSBase";
-import UserDataType from "../Types/UserDataType";
+import UserDataType from "../Types/Data/UserDataType";
 
 /**
  * User class.

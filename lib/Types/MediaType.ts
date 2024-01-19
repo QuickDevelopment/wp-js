@@ -93,7 +93,127 @@ export default interface MediaType {
          *
          * @type {number}
          */
-        width: number
+        width: number,
+
+        /**
+         * The sizes.
+         * @since 3.0.0
+         */
+        sizes: {
+            /**
+             * The thumbnailsize.
+             * @since 3.0.0
+             */
+            [key: string]: {
+                /**
+                 * The file.
+                 * @since 3.0.0
+                 */
+                file: string,
+
+                /**
+                 * The height.
+                 * @since 3.0.0
+                 */
+                height: number,
+
+                /**
+                 * The mime type.
+                 * @since 3.0.0
+                 */
+                mime_type: string,
+
+                /**
+                 * The source URL.
+                 * @since 3.0.0
+                 */
+                source_url: string,
+
+                /**
+                 * The width.
+                 * @since 3.0.0
+                 */
+                width: number
+            }
+        },
+
+        /**
+         * The image meta.
+         * @since 3.0.0
+         */
+        image_meta: {
+            /**
+             * The aperture.
+             * @since 3.0.0
+             */
+            aperture: string,
+
+            /**
+             * The credit.
+             * @since 3.0.0
+             */
+            credit: string,
+
+            /**
+             * The camera.
+             * @since 3.0.0
+             */
+            camera: string,
+
+            /**
+             * The caption.
+             * @since 3.0.0
+             */
+            caption: string,
+
+            /**
+             * The created timestamp.
+             * @since 3.0.0
+             */
+            created_timestamp: string,
+
+            /**
+             * The copyright.
+             * @since 3.0.0
+             */
+            copyright: string,
+
+            /**
+             * The focal length.
+             * @since 3.0.0
+             */
+            focal_length: string,
+
+            /**
+             * The iso.
+             * @since 3.0.0
+             */
+            iso: string,
+
+            /**
+             * The shutter speed.
+             * @since 3.0.0
+             */
+            shutter_speed: string,
+
+            /**
+             * The title.
+             * @since 3.0.0
+             */
+            title: string,
+
+            /**
+             * The orientation.
+             * @since 3.0.0
+             */
+            orientation: string,
+
+            /**
+             * The keywords.
+             * @since 3.0.0
+             */
+            keywords: Array<string>
+        }
     },
 
     /**
@@ -144,5 +264,5 @@ export default interface MediaType {
      *
      * @type {string}
      */
-    type: string
+    type: string,
 }

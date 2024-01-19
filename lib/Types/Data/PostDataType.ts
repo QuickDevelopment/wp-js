@@ -1,6 +1,6 @@
 import UserDataType from "./UserDataType";
-import MediaType from "./MediaType";
-import TermType from "./TermType";
+import MediaType from "../MediaType";
+import TermType from "../TermType";
 
 /**
  * The WP Post fields.
