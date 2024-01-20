@@ -16,6 +16,11 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
+  "typedocOptions": {
+    "out": "./docs",
+    "entryPoints": ["./lib/main.ts"],
+    "exclude": ["./lib/wp-js.config.ts"],
+  },
   "include": ["lib"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
