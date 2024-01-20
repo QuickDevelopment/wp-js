@@ -50,41 +50,8 @@ posts.fetchMany().then((posts: PostDataType[]) => {
 });
 ```
 
-### Retrieve User
-This is an example of how to retrieve user data from your WordPress site using the `User` class.
-```
-import {User, UserDataType} from "@quickdevelopment/wp-js";
-
-const user = new User(116)
-
-user.fetchMany().then((user: UserDataType[]) => {
-  console.log(user);
-})
-.catch((err) => {
-  console.log(err);
-});
-```
-
-## Create your own API class
-You can create your own API class to retrieve data from the WP API. This is an example of how to create a custom API class.
-```
-import {WPJSBase} from "@quickdevelopment/wp-js";
-
-class CustomEndpoint extends WPJSBase<CustomEndpointType> {
-  constructor() {
-    super();
-    this.endpoint = 'my-endpoint'
-  }
-
-  public fetch(): Promise<CustomEndpointType> {
-    return this.get();
-  }
-  
-  public fetchMany(): Promise<CustomEndpointType[]> {
-    return this.get();
-  }
-}
-```
+## Documentation
+For more information about the library, see the [documentation](https://quickdevelopment.github.io/wp-js/).
 
 ## Coming up
 - [x] Add more API classes to retrieve data from the WP API
