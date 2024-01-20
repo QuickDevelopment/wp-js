@@ -1,10 +1,20 @@
-# WP-JS
+<div align="center">
+<h2>@quickdevelopment/wp-js &middot; <a href="https://badge.fury.io/js/@quickdevelopment%2Fwp-js"><img src="https://badge.fury.io/js/@quickdevelopment%2Fwp-js.svg" alt="npm version" height="18"></a></h2>
+  <p align="center">
+    Get all your public WordPress data through the WP API using a tree-shakable TypeScript library.
+  </p>
+</div>
 
-Get all your public WordPress data through the WP API using a tree-shakable TypeScript library.
-
-## Pre-requisites
-- Make sure your WordPress site has the WP REST API enabled.
-- It can cause CORS issues if you're using a local WordPress site.
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#installation">Installation</a></li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#coming-up">Coming up</a></li>
+    <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#license">License</a></li>
+  </ol>
+</details>
 
 ## Installation
 ```
@@ -32,7 +42,7 @@ import {Post, PostDataType} from "@quickdevelopment/wp-js";
 
 const posts = new Post()
 
-posts.fetch().then((posts: PostDataType[]) => {
+posts.fetchMany().then((posts: PostDataType[]) => {
   console.log(posts);
 })
 .catch((err) => {
@@ -47,7 +57,7 @@ import {User, UserDataType} from "@quickdevelopment/wp-js";
 
 const user = new User(116)
 
-user.fetch().then((user: UserDataType[]) => {
+user.fetchMany().then((user: UserDataType[]) => {
   console.log(user);
 })
 .catch((err) => {
@@ -69,20 +79,24 @@ class CustomEndpoint extends WPJSBase<CustomEndpointType> {
   public fetch(): Promise<CustomEndpointType> {
     return this.get();
   }
+  
+  public fetchMany(): Promise<CustomEndpointType[]> {
+    return this.get();
+  }
 }
 ```
 
 ## Coming up
-- [ ] Add more API classes to retrieve data from the WP API
+- [x] Add more API classes to retrieve data from the WP API
 - [ ] Examples of how to use the library in multiple contexts
 - [ ] Add a documentation site
 
-## Issues
-If you find any issues with the library, please create an issue on the GitHub repository.
-
-| Known Issues | Status |
-|--------------|--------|
-|              |        |
-
 ## Contributing
-If you want to contribute to this project, please read the CONTRIBUTING.md file.
+If you want to contribute to this project, see [CONTRIBUTING](CONTRIBUTING) for details.
+
+## License
+MIT © Quickdevelopment. See [LICENSE](LICENSE) for details.
+
+
+[coveralls-image]:https://coveralls.io/repos/github/quickdevelopment/wp-js/badge.svg?branch=main
+[coveralls-url]:https://coveralls.io/github/quickdevelopment/wp-js?branch=main
