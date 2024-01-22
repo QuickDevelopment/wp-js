@@ -1,7 +1,7 @@
 {
   "name": "@quickdevelopment/wp-js",
   "private": false,
-  "version": "3.0.2",
+  "version": "3.0.3",
   "repository": "https://github.com/QuickDevelopment/wp-js",
   "author": "QuickDevelopment",
   "license": "MIT",
@@ -10,6 +10,7 @@
   "main": "./dist/wp-js.umd.cjs",
   "module": "./dist/wp-js.js",
   "types": "./dist/main.d.ts",
+  "typings": "./dist/main.d.ts",
   "sideEffects": false,
   "exports": {
     ".": {
