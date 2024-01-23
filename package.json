@@ -9,13 +9,12 @@
   "type": "module",
   "main": "./dist/wp-js.umd.cjs",
   "module": "./dist/wp-js.js",
-  "types": "./dist/main.d.ts",
   "typings": "./dist/main.d.ts",
   "sideEffects": false,
   "exports": {
     ".": {
-      "import": "./dist/wp-js.js",
-      "require": "./dist/wp-js.umd.cjs"
+      "types": "./dist/main.d.ts",
+      "default": "./dist/wp-js.umd.cjs"
     }
   },
   "files": [
