@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { PostDataType, Post } from "@quickdevelopment/wp-js";
+import { Post } from "@quickdevelopment/wp-js";
 import {ref} from "vue";
-const posts = new Post();
-const allPosts = ref<PostDataType[]>()
+import CustomPostDataType from "./types/CustomPostDataType.ts";
+const posts = new Post<CustomPostDataType>();
+const allPosts = ref<CustomPostDataType[]>([]);
 
-posts.fetchMany().then((data: PostDataType[]) => {
+posts.fetchMany().then((data: CustomPostDataType[]) => {
   allPosts.value = data;
 });
 </script>
