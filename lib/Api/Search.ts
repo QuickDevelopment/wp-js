@@ -5,7 +5,7 @@ import SearchDataType from "../Types/Data/SearchDataType";
  * The Search class.
  * @since 3.0.0
  */
-export default class Search extends WPJSBase<SearchDataType[]> {
+export default class Search<T = SearchDataType[]> extends WPJSBase<T> {
     constructor(endpoint?: string) {
         super();
         this.endpoint = endpoint ? endpoint : 'search';
@@ -37,7 +37,7 @@ export default class Search extends WPJSBase<SearchDataType[]> {
      *    console.log(search);
      * })
      */
-    public async fetch(): Promise<SearchDataType[]> {
+    public async fetchMany(): Promise<T[]> {
         return this.get();
     }
 }

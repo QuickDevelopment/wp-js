@@ -5,7 +5,7 @@ import TaxonomyDataType from "../Types/Data/TaxonomyDataType";
  * The Taxonomy class.
  * @since 3.0.0
  */
-export default class Taxonomy extends WPJSBase<TaxonomyDataType[] | TaxonomyDataType> {
+export default class Taxonomy<T = TaxonomyDataType[] | TaxonomyDataType> extends WPJSBase<T> {
     constructor(endpoint?: string) {
         super();
         this.endpoint = endpoint ? endpoint :'taxonomies';
@@ -23,7 +23,7 @@ export default class Taxonomy extends WPJSBase<TaxonomyDataType[] | TaxonomyData
      *     console.log(data);
      * });
      */
-    public async fetch(): Promise<TaxonomyDataType> {
+    public async fetch(): Promise<T> {
         return this.get();
     }
 
@@ -40,7 +40,7 @@ export default class Taxonomy extends WPJSBase<TaxonomyDataType[] | TaxonomyData
      *    console.log(data);
      * });
      */
-    public async fetchMany(): Promise<TaxonomyDataType[]> {
+    public async fetchMany(): Promise<T[]> {
         return this.get();
     }
 }

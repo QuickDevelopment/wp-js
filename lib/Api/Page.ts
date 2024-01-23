@@ -5,7 +5,7 @@ import PageDataType from "../Types/Data/PageDataType";
  * The Page class.
  * @since 3.0.0
  */
-export default class Page extends WPJSBase<PageDataType[] | PageDataType> {
+export default class Page<T = PageDataType[] | PageDataType> extends WPJSBase<T> {
     constructor(endpoint?: string) {
         super();
         this.endpoint = endpoint ? endpoint : 'pages';
@@ -23,7 +23,7 @@ export default class Page extends WPJSBase<PageDataType[] | PageDataType> {
      *     console.log(page)
      * })
      */
-    public async fetch(): Promise<PageDataType> {
+    public async fetch(): Promise<T> {
         return this.get();
     }
 
@@ -39,7 +39,7 @@ export default class Page extends WPJSBase<PageDataType[] | PageDataType> {
      *     console.log(pages)
      * })
      */
-    public async fetchMany(): Promise<PageDataType[]> {
+    public async fetchMany(): Promise<T[]> {
         return this.get();
     }
 }
