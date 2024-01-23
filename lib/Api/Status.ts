@@ -5,7 +5,7 @@ import StatusDataType from "../Types/Data/StatusDataType";
  * The Status class.
  * @since 3.0.0
  */
-export default class Status extends WPJSBase<StatusDataType[] | StatusDataType> {
+export default class Status<T = StatusDataType[] | StatusDataType> extends WPJSBase<T> {
     constructor(endpoint?: string) {
         super();
         this.endpoint = endpoint ? endpoint : 'statuses';
@@ -23,7 +23,7 @@ export default class Status extends WPJSBase<StatusDataType[] | StatusDataType> 
      *     console.log(data);
      * });
      */
-    public async fetch(): Promise<StatusDataType> {
+    public async fetch(): Promise<T> {
         return this.get();
     }
 
@@ -40,7 +40,7 @@ export default class Status extends WPJSBase<StatusDataType[] | StatusDataType> 
      *    console.log(data);
      * });
      */
-    public async fetchMany(): Promise<StatusDataType[]> {
+    public async fetchMany(): Promise<T[]> {
         return this.get();
     }
 }

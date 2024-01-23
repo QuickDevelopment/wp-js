@@ -5,7 +5,7 @@ import CategoryDataType from "../Types/Data/CategoryDataType";
  * Category class.
  * @since 3.0.0
  */
-export default class Category extends WPJSBase<CategoryDataType[] | CategoryDataType> {
+export default class Category<T = CategoryDataType[] | CategoryDataType> extends WPJSBase<T> {
     constructor(endpoint?: string) {
         super();
         this.endpoint = endpoint ? endpoint : 'categories';
@@ -23,7 +23,7 @@ export default class Category extends WPJSBase<CategoryDataType[] | CategoryData
      *   console.log(category);
      * })
      */
-    public async fetch(): Promise<CategoryDataType> {
+    public async fetch(): Promise<T> {
         return this.get();
     }
 
@@ -39,7 +39,7 @@ export default class Category extends WPJSBase<CategoryDataType[] | CategoryData
      *   console.log(categories);
      * })
      */
-    public async fetchMany(): Promise<CategoryDataType[]> {
+    public async fetchMany(): Promise<T[]> {
         return this.get();
     }
 }

@@ -5,7 +5,7 @@ import TypeDataType from "../Types/Data/TypeDataType";
  * The Type class.
  * @since 3.0.0
  */
-export default class Type extends WPJSBase<TypeDataType[] | TypeDataType> {
+export default class Type<T = TypeDataType[] | TypeDataType> extends WPJSBase<T> {
     constructor(endpoint?: string) {
         super();
         this.endpoint = endpoint ? endpoint : 'types';
@@ -23,7 +23,7 @@ export default class Type extends WPJSBase<TypeDataType[] | TypeDataType> {
      *    console.log(type);
      * });
      */
-    public async fetch(): Promise<TypeDataType> {
+    public async fetch(): Promise<T> {
         return this.get();
     }
 
@@ -39,7 +39,7 @@ export default class Type extends WPJSBase<TypeDataType[] | TypeDataType> {
      *   console.log(types);
      * })
      */
-    public async fetchMany(): Promise<TypeDataType[]> {
+    public async fetchMany(): Promise<T[]> {
         return this.get();
     }
 }

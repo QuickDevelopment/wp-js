@@ -5,7 +5,7 @@ import MediaDataType from "../Types/Data/MediaDataType";
  * The Media class.
  * @since 3.0.0
  */
-export default class Media extends WPJSBase<MediaDataType[] | MediaDataType> {
+export default class Media<T = MediaDataType[] | MediaDataType> extends WPJSBase<T> {
     constructor(endpoint?: string) {
         super();
         this.endpoint = endpoint ? endpoint : 'media';
@@ -23,7 +23,7 @@ export default class Media extends WPJSBase<MediaDataType[] | MediaDataType> {
      *     console.log(media)
      * })
      */
-    public async fetch(): Promise<MediaDataType> {
+    public async fetch(): Promise<T> {
         return this.get();
     }
 
@@ -39,7 +39,7 @@ export default class Media extends WPJSBase<MediaDataType[] | MediaDataType> {
      *    console.log(media)
      * })
      */
-    public async fetchMany(): Promise<MediaDataType[]> {
+    public async fetchMany(): Promise<T[]> {
         return this.get();
     }
 }
