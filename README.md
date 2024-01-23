@@ -56,7 +56,7 @@ For more information about the library, see the [documentation](https://quickdev
 ## Coming up
 - [x] Add more API classes to retrieve data from the WP API
 - [ ] Examples of how to use the library in multiple contexts
-- [ ] Add a documentation site
+- [x] Add a documentation site
 
 ## Contributing
 If you want to contribute to this project, see [CONTRIBUTING](CONTRIBUTING) for details.
