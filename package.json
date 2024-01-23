@@ -1,9 +1,16 @@
 {
   "name": "@quickdevelopment/wp-js",
   "private": false,
-  "version": "3.0.4",
+  "version": "3.0.5",
   "repository": "https://github.com/QuickDevelopment/wp-js",
   "author": "QuickDevelopment",
+  "homepage": "https://github.com/QuickDevelopment/wp-js",
+  "bugs": {
+    "url": "https://github.com/QuickDevelopment/wp-js/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "MIT",
   "description": "A simple library to interact with the WordPress REST API",
   "type": "module",
@@ -16,6 +23,10 @@
       "types": "./dist/main.d.ts",
       "default": "./dist/wp-js.umd.cjs"
     }
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
   },
   "files": [
     "dist"
