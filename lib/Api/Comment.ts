@@ -23,23 +23,7 @@ export default class Comment<T = CommentDataType[] | CommentDataType> extends WP
      *   console.log(comment);
      * })
      */
-    public async fetch(): Promise<T> {
-        return this.get();
-    }
-
-    /**
-     * Fetch multiple comments.
-     * @since 3.0.0
-     * @example
-     * import { Comment } from "@quickdevelopment/wp-js";
-     *
-     * const comments = new Comment();
-     *
-     * comments.fetchMany().then((comments) => {
-     *   console.log(comments);
-     * })
-     */
-    public async fetchMany(): Promise<T[]> {
+    public async fetch(): Promise<T | T[]> {
         return this.get();
     }
 }

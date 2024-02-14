@@ -71,7 +71,7 @@ export default class WPJSBase<T> extends WPJSSingleton {
      * @protected
      * @since 2.0.0
      */
-    protected fetch(): Promise<T> {
+    protected fetch(): Promise<T | T[]> {
         return Promise.reject(
             new Error('fetch() must be implemented.')
         )

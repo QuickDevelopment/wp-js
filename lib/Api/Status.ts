@@ -23,24 +23,7 @@ export default class Status<T = StatusDataType[] | StatusDataType> extends WPJSB
      *     console.log(data);
      * });
      */
-    public async fetch(): Promise<T> {
-        return this.get();
-    }
-
-    /**
-     * Fetch many statuses.
-     *
-     * @since 3.0.0
-     * @example
-     * import { Status } from '@quickdevelopment/wp-js';
-     *
-     * const status = new Status();
-     *
-     * status.fetchMany().then((data) => {
-     *    console.log(data);
-     * });
-     */
-    public async fetchMany(): Promise<T[]> {
+    public async fetch(): Promise<T | T[]> {
         return this.get();
     }
 }

@@ -121,23 +121,7 @@ export default class Post<T = PostDataType[] | PostDataType> extends WPJSBase<T>
      *     console.log(post)
      * })
      */
-    public async fetch(): Promise<T> {
-        return this.get();
-    }
-
-    /**
-     * Get multiple posts.
-     * @since 3.0.0
-     * @example
-     * import {Post} from "@quickdevelopment/wp-js";
-     *
-     * const posts = new Post();
-     *
-     * posts.fetchMany().then((posts) => {
-     *     console.log(posts)
-     * })
-     */
-    public async fetchMany(): Promise<T[]> {
+    public async fetch(): Promise<T | T[]> {
         return this.get();
     }
 }

@@ -23,23 +23,7 @@ export default class Type<T = TypeDataType[] | TypeDataType> extends WPJSBase<T>
      *    console.log(type);
      * });
      */
-    public async fetch(): Promise<T> {
-        return this.get();
-    }
-
-    /**
-     * Fetch multiple types.
-     * @since 3.0.0
-     * @example
-     * import { Type } from "@quickdevelopment/wp-js";
-     *
-     * const types = new Type();
-     *
-     * types.fetchMany().then((types) => {
-     *   console.log(types);
-     * })
-     */
-    public async fetchMany(): Promise<T[]> {
+    public async fetch(): Promise<T | T[]> {
         return this.get();
     }
 }

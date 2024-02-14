@@ -23,23 +23,7 @@ export default class Category<T = CategoryDataType[] | CategoryDataType> extends
      *   console.log(category);
      * })
      */
-    public async fetch(): Promise<T> {
-        return this.get();
-    }
-
-    /**
-     * Fetch multiple categories.
-     * @since 3.0.0
-     * @example
-     * import { Category } from "@quickdevelopment/wp-js";
-     *
-     * const categories = new Category();
-     *
-     * categories.fetchMany().then((categories) => {
-     *   console.log(categories);
-     * })
-     */
-    public async fetchMany(): Promise<T[]> {
+    public async fetch(): Promise<T | T[]> {
         return this.get();
     }
 }

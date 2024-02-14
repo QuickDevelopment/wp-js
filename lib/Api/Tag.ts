@@ -23,23 +23,7 @@ export default class Tag<T = PostTagDataType[] | PostTagDataType> extends WPJSBa
      *    console.log(data);
      * })
      */
-    public async fetch(): Promise<T> {
-        return this.get();
-    }
-
-    /**
-     * Fetch many tags.
-     * @since 3.0.0
-     * @example
-     * import { Tag } from '@quickdevelopment/wp-js';
-     *
-     * const tag = new Tag();
-     *
-     * tag.fetchMany().then((data) => {
-     *   console.log(data);
-     * })
-     */
-    public async fetchMany(): Promise<T[]> {
+    public async fetch(): Promise<T | T[]> {
         return this.get();
     }
 }
