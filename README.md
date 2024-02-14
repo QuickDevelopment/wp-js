@@ -42,7 +42,7 @@ import {Post, PostDataType} from "@quickdevelopment/wp-js";
 
 const posts = new Post()
 
-posts.fetchMany().then((posts: PostDataType[]) => {
+posts.fetch().then((posts: PostDataType[]) => {
   console.log(posts);
 })
 .catch((err) => {
