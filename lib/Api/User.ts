@@ -42,23 +42,7 @@ export default class User<T = UserDataType[] | UserDataType> extends WPJSBase<T>
      *  console.log(user);
      * })
      */
-    public async fetch(): Promise<T> {
-        return this.get();
-    }
-
-    /**
-     * Get multiple users.
-     * @since 3.0.5
-     * @example
-     * import {User} from "@quickdevelopment/wp-js";
-     *
-     * const users = new User();
-     *
-     * users.fetchMany().then((users) => {
-     *  console.log(users);
-     * })
-     */
-    public async fetchMany(): Promise<T[]> {
+    public async fetch(): Promise<T | T[]> {
         return this.get();
     }
 }

@@ -23,23 +23,7 @@ export default class Page<T = PageDataType[] | PageDataType> extends WPJSBase<T>
      *     console.log(page)
      * })
      */
-    public async fetch(): Promise<T> {
-        return this.get();
-    }
-
-    /**
-     * Fetch multiple pages.
-     * @since 3.0.0
-     * @example
-     * import {Page} from "@quickdevelopment/wp-js";
-     *
-     * const pages = new Page();
-     *
-     * pages.fetchMany().then((pages) => {
-     *     console.log(pages)
-     * })
-     */
-    public async fetchMany(): Promise<T[]> {
+    public async fetch(): Promise<T | T[]> {
         return this.get();
     }
 }

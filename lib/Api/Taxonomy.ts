@@ -23,24 +23,7 @@ export default class Taxonomy<T = TaxonomyDataType[] | TaxonomyDataType> extends
      *     console.log(data);
      * });
      */
-    public async fetch(): Promise<T> {
-        return this.get();
-    }
-
-    /**
-     * Fetch many taxonomies.
-     *
-     * @since 3.0.0
-     * @example
-     * import { Taxonomy } from '@quickdevelopment/wp-js';
-     *
-     * const taxonomy = new Taxonomy();
-     *
-     * taxonomy.fetchMany().then((data) => {
-     *    console.log(data);
-     * });
-     */
-    public async fetchMany(): Promise<T[]> {
+    public async fetch(): Promise<T | T[]> {
         return this.get();
     }
 }
