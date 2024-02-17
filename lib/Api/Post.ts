@@ -26,7 +26,7 @@ export default class Post<T = PostDataType[] | PostDataType> extends WPJSBase<T>
      *
      * const slugPost = new Post();
      *
-     * slugPost.bySlug('hello-world').get().then((post) => {
+     * slugPost.bySlug('hello-world').fetch().then((post) => {
      *     // This will return the post from slug 'hello-world'.
      *     console.log(post)
      * })
@@ -56,7 +56,7 @@ export default class Post<T = PostDataType[] | PostDataType> extends WPJSBase<T>
      *
      * const searchTermPosts = new Post();
      *
-     * searchTermPosts.bySearchTerm('hello-world').get().then((posts) => {
+     * searchTermPosts.bySearchTerm('hello-world').fetch().then((posts) => {
      *     // This will return the post from slug 'hello-world'.
      *     console.log(posts)
      * })
@@ -86,7 +86,7 @@ export default class Post<T = PostDataType[] | PostDataType> extends WPJSBase<T>
      *
      * const authorPosts = new Post();
      *
-     * authorPosts.byAuthor(1).get().then((posts) => {
+     * authorPosts.byAuthor(1).fetch().then((posts) => {
      *     // This will return the posts from author with id 1.
      *     console.log(posts)
      * })

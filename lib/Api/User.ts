@@ -21,7 +21,7 @@ export default class User<T = UserDataType[] | UserDataType> extends WPJSBase<T>
      *
      * const user = new User();
      *
-     * user.byUserId(1).get().then((user) => {
+     * user.byUserId(1).fetch().then((user) => {
      *   console.log(user);
      * })
      */
