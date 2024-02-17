@@ -57,7 +57,7 @@ export default class Post<T = PostDataType[] | PostDataType> extends WPJSBase<T>
      * const searchTermPosts = new Post();
      *
      * searchTermPosts.bySearchTerm('hello-world').fetch().then((posts) => {
-     *     // This will return the post from slug 'hello-world'.
+     *     // This will return the post from search term 'hello-world'.
      *     console.log(posts)
      * })
      */
