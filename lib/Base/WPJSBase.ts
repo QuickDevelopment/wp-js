@@ -60,7 +60,6 @@ export default class WPJSBase<T> extends WPJSSingleton {
      * @protected
      */
     protected async get<T>(): Promise<T> {
-        console.log(this.constructUrl())
         const response: Response = await fetch(this.constructUrl())
         const data = await response.json();
         return data as T;
