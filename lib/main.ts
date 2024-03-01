@@ -14,6 +14,7 @@ export { default as ConfigManager } from './Manager/ConfigManager';
 export { default as WPJSSingleton } from './Singleton/WPJSSingleton';
 export type { default as CategoryDataType } from './Types/Data/CategoryDataType';
 export type { default as CommentDataType } from './Types/Data/CommentDataType';
+export type { default as ErrorDataType } from './Types/Data/ErrorDataType';
 export type { default as MediaDataType } from './Types/Data/MediaDataType';
 export type { default as PageDataType } from './Types/Data/PageDataType';
 export type { default as PostDataType } from './Types/Data/PostDataType';

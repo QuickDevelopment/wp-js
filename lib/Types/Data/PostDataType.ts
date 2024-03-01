@@ -1,6 +1,7 @@
 import UserDataType from "./UserDataType";
 import MediaType from "../MediaType";
 import TermType from "../TermType";
+import ErrorDataType from "./ErrorDataType";
 
 /**
  * The WP Post fields.
@@ -253,6 +254,6 @@ export default interface PostDataType {
          *
          * @type {Array<UserDataType>}
          */
-        author: Array<UserDataType>
+        author: Array<UserDataType | ErrorDataType>
     }
 }

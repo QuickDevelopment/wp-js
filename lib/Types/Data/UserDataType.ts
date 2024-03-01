@@ -7,10 +7,10 @@ export default interface UserDataType {
     /**
      * The exposed ACF fields. Expose fields to use custom user information in your JS app.
      *
-     * @type {Array<object>}
+     * @type {object}
      * @see https://www.advancedcustomfields.com/resources/
      */
-    acf: Array<object>,
+    acf: object,
 
     /**
      * The user ID.
